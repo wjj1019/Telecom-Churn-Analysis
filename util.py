@@ -35,8 +35,13 @@ def read_file(folder_name:str):
     return data_dict
 
 def data_summary(data):
+    """
+    Args:
+        Dataframe
+    Returns:
+        summary of whether there are null values and rows are unique
+    """
     #Checking for Null Values
-
     for k, v in data.items():
         #Counting the number of missinf values
         null_count = data[k].isnull().sum().values
@@ -62,8 +67,12 @@ def data_summary(data):
             continue
 
 def plot_binary_corr(binary_data):
-    from sklearn.metrics import matthews_corrcoef
-
+    """
+    Args:
+        binary dataframe
+    Returns:
+        Correlation matrix (dataframe format) of binary variables
+    """
     cols = binary_data.columns
     size = len(cols)
 
@@ -92,6 +101,16 @@ def plot_binary_corr(binary_data):
 
 
 def calculate_dissimilarity(data, columns, target, transformation=None):
+    """
+    Args:
+        dataframe
+        columns of continuous variables
+        target variable (Churn Label)
+        Transformation type (Log or yeo-johnson)
+    Returns:
+        Distribution dissimilarity measure in dataframe format (KS-Test, KL Divergence and EMD measurement)
+        for each variables
+    """
     dissimilarities = {
         "ks": [],
         "js": [],
@@ -135,6 +154,14 @@ def calculate_dissimilarity(data, columns, target, transformation=None):
 
 
 def calculate_categorical_association(df, columns, target):
+        """
+    Args:
+        Dataframe
+        Columns of binary or categorical variables
+        Target variable (Churn Label)
+    Returns:
+        test score (chi-squared and Cramer-v) in dataframe for each of the variables
+    """
     associations = {"chi2_pvalue": [], "cramer_v": []}
     
     for col in columns:

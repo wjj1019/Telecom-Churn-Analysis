@@ -1,5 +1,7 @@
 # Telecom-Churn-Analysis
 
+Consists of three steps:
+
 1. Churn Analysis
 - Deep analysis of telecom churn dataset (EDA, Feature Engineering, Statistical Analysis)
 
